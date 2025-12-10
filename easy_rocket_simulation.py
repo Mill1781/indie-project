@@ -124,7 +124,7 @@ def rk4_step(t, state, dt):
 
 # ---------------------------------------------------------------------------------------
 # program entry, simulation
-#null array
+# null array
 times = []#null array for time
 vels = []
 alts = []
