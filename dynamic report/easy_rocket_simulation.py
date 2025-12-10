@@ -11,7 +11,7 @@ Cd = 0.75           # drag coefficient
 r = 0.22            # radius of the rocket
 A = r * r * np.pi   # cross-sectional area 
 
-# Atmosphere and gravity
+# Atmosphere and gravity parameters
 R = 287.05          # Gas constant for air(J / (kg * K) )
 p0 = 101325         # Pressure at sea level(Pa)
 p11 = 22631.7       # Pressure at altitude 11km(Pa)
@@ -43,8 +43,10 @@ dt = 0.01           # time step (s)
 t_max = 100         # maximum simulation time (s)
 
 
-#reusing function
+# state and function
  
+
+ # ISA model - Barometric formula
 def pressure(h):
     if(h <= 11000):
         return p0 * (temperature(h) / T0 )**( g0 / ( R * L0 ))
@@ -61,6 +63,7 @@ def pressure(h):
     else:
         return p71 *(temperature(h) / T71 )**( g0 / ( R * L71 ))
 
+# ISA model
 def temperature(h):
     if(h <= 11000):
         return T0 - L0 * h
@@ -77,8 +80,9 @@ def temperature(h):
     else:
         return T71 - L71 * (h - 71000)
 
+# ideal gas equation
 def density(h):
-    return pressure(h) / (R * temperature(h))   #ideal gas equation
+    return pressure(h) / (R * temperature(h))   
 
 def gravity(h):
     return g0 * ( Re / ( Re + h ))**2
@@ -91,6 +95,7 @@ def drag(v, h):
 
 
 # compute the derivatives for RK4 like dv/dt, dh/dt, dm/dt
+# although t is not being used for now, I keep it as insurance if I need to apply in the future
 def rocket_derivatives(t, state): #compute d.. / d..
     v, h, m = state
     if m <= mdry:        # when fuel runs out
@@ -109,31 +114,35 @@ def rocket_derivatives(t, state): #compute d.. / d..
 
     return np.array([dvdt, dhdt, dmdt])
 
-
 #RK4 method, k is the slope of state row at point t = current t
 def rk4_step(t, state, dt):
     k1 = rocket_derivatives(t, state)
-    k2 = rocket_derivatives(t + dt/2, state + dt*k1/2)
-    k3 = rocket_derivatives(t + dt/2, state + dt*k2/2)
-    k4 = rocket_derivatives(t + dt, state + dt*k3)
-    return state + dt * (k1 + 2*k2 + 2*k3 + k4) / 6 #average of the slope
-    #return state_i+1 = state_i + k * delta_t 
+    k2 = rocket_derivatives(t + dt / 2, state + dt * k1 / 2)
+    k3 = rocket_derivatives(t + dt / 2, state + dt * k2 / 2)
+    k4 = rocket_derivatives(t + dt, state + dt * k3)
+    return state + dt * (k1 + 2 * k2 + 2 * k3 + k4) / 6 #average of the slope
+    #return state_i+1 = state_i + k(slope) * delta_t 
 
 
 
 
 # ---------------------------------------------------------------------------------------
-# program entry, simulation
+# program entry, simulation part
 # null array
-times = []#null array for time
-vels = []
+times = []          #null array for time
+vels = []           
 alts = []
 masses = []
 pressures = []
 temperatures = []
-t = 0
+
+
+# initial condition --> t = 0, h = 0, v = 0, m = m0
+t = 0                                
 state = np.array([0.0, 0.0, m0])   # v, h, m
 
+
+# iteration
 while t < t_max and state[1] < 82000: # SAI model won't fully work above altitude 82km
     times.append(t)
     vels.append(state[0])
@@ -145,6 +154,7 @@ while t < t_max and state[1] < 82000: # SAI model won't fully work above altitud
 
     state = rk4_step(t, state, dt)
     t += dt
+
 
 # Plot results
 plt.figure(figsize=(9, 5))
