@@ -1,0 +1,8 @@
+Jacky
+1,none
+2,shooter,70,100
+3,tank,110,60
+Emily
+1,shooter,70,100
+2,none
+3,tank,110,60
