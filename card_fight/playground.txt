@@ -1,0 +1,9 @@
+Jacky
+1,none
+2,shooter,150,175,20,knife
+3,none
+Emily
+1,none
+2,none
+3,tank,300,60,20
+
