@@ -5,18 +5,32 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////(我是分隔線)
 
-主程式檔案名稱：hw4.java
+主程式檔案名稱：hw5.java
 
 其他檔案：
 
-	card_class(Package 1):
+	card_equipment :
+		Equipment.java
+		hrmor.java
+		hat.java
+		knife.java
+		mask.java
+		force.java
+
+	card_potion:
+		Potion.java
+		damage_potion.java
+		healing_potion.java
+		defense_potion.java
+
+	card_class :
 	 	Card.java
  	 	priest.java
 	 	tank.java
 	 	shooter.java
 	 	assassin.java
 
-	 card_game(Package 2) :
+	 card_game :
 	 	Fightground.java
 	 	Player.java
 	 	Game_command.java
@@ -53,11 +67,11 @@
 
 	1-2. 以下為使用本系統的方法
 
-		a. 在收放hw4的資料夾打開cmd，並在cmd裏頭編譯hw4
-		ex. javac hw4.java
+		a. 在收放hw5的資料夾打開cmd，並在cmd裏頭編譯hw5
+		ex. javac hw5.java
 
-		b. 執行hw4, 還請使用者另外輸入兩個參數player_info.txt playground.txt(儲存檔案)
-		ex. hw4 player_info.txt playground.txt
+		b. 執行hw5, 還請使用者另外輸入兩個參數player_info.txt playground.txt(儲存檔案)
+		ex. hw5 player_info.txt playground.txt
 
 		c. 程式將自動讀取存檔後開始並顯示遊戲畫面與指令說明，請玩家依照提示輸入指令
 
@@ -84,17 +98,24 @@
 
 		7
 		Jacky,700,6
-		1,0,0,0
+		1,0,0,0,1,1
+		1,1,1,1,1,1
+		1,1,1
 		Emily,500,6
-		0,0,1,0
+		0,0,1,0,1,1
+		1,0,0,0,0,1
+		0,0,1
 
 
 		7 		(回合數)
 		Jacky,700,6	(玩家一名稱), (玩家一生命值), (玩家一能量點)
-		1,0,0,0		(玩家一牧師持有數), (玩家一坦克持有數), (玩家一射手持有數), (玩家一刺客持有數)
+		1,0,0,0,1,1	(玩家一炸彈人持有數),(玩家一牧師持有數), (玩家一坦克持有數), (玩家一射手持有數), (玩家一刺客持有數),(玩家一商人持有數)
+		1,1,1,1,1,1
+		1,1,1
 		Emily,500,6	(玩家二名稱), (玩家二生命值), (玩家二能量點)
-		0,0,1,0		(玩家二牧師持有數), (玩家二坦克持有數), (玩家二射手持有數), (玩家二刺客持有數)
-
+		0,0,1,0,1,1	(玩家二牧師持有數), (玩家二坦克持有數), (玩家二射手持有數), (玩家二刺客持有數)
+		1,0,0,0,0,1
+		0,0,1
 
 
 
