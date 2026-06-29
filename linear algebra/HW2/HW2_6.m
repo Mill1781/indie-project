@@ -1,0 +1,32 @@
+C1 = [0 1 0 1 0 0 0 1]';
+C2 = [1 0 1 0 0 0 1 0]';
+C3 = [0 1 0 1 0 0 0 0]';
+C4 = [1 0 1 0 1 0 0 0]';
+C5 = [0 0 0 1 0 1 0 0]';
+C6 = [0 0 0 0 1 0 1 0]';
+C7 = [0 1 0 0 0 1 0 1]';
+C8 = [1 0 0 0 0 0 1 0]';
+A = [C1 C2 C3 C4 C5 C6 C7 C8];
+
+
+A2 = A^2;
+A3 = A^3;
+A4 = A^4;
+A5 = A^5;
+A6 = A^6;
+A7 = A^7;
+A8 = A^8;
+fprintf("A2:\n");
+disp(A2);
+fprintf("A4:\n");
+disp(A4);
+fprintf("A6:\n");
+disp(A6);
+fprintf("A8:\n");
+disp(A8);
+fprintf("A3:\n");
+disp(A3);
+fprintf("A5:\n");
+disp(A5);
+fprintf("A7:\n");
+disp(A7);
