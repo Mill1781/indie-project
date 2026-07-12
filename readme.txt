@@ -1,6 +1,7 @@
 # My Academic Portfolio
 
 Welcome to my academic portfolio! This repository serves as a collection of projects and assignments completed during my studies in Aerospace and related fields which may be helpful to my future.
+If you want to briefly go through my works, I'll recommend refering Dynamic report and game implementation in CS's homework4.
 
 ## Contents:
 
